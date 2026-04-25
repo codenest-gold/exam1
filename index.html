@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         /* ================= المتغيرات والثيمات ================= */
         :root {
@@ -15,197 +16,601 @@
             --border-color: rgba(255, 255, 255, 0.15);
             --text-color: #f8fafc;
             /* الثيم الافتراضي (الرصاصي/الرمادي) */
-            --bg-color: #1e2022; 
-            --primary-color: #9ca3af; 
+            --bg-color: #1e2022;
+            --primary-color: #9ca3af;
             --secondary-color: #4b5563;
             --glow-color: rgba(156, 163, 175, 0.5);
         }
 
         /* 10 ثيمات احترافية منظمة */
-        body[data-theme="1"] { --bg-color: #1e2022; --primary-color: #9ca3af; --glow-color: rgba(156, 163, 175, 0.6); --secondary-color: #4b5563;} /* رصاصي فاخر (الأساسي) */
-        body[data-theme="2"] { --bg-color: #0f172a; --primary-color: #3b82f6; --glow-color: rgba(59, 130, 246, 0.6); --secondary-color: #2563eb;} /* أزرق فضائي */
-        body[data-theme="3"] { --bg-color: #1a0b2e; --primary-color: #a855f7; --glow-color: rgba(168, 85, 247, 0.6); --secondary-color: #7e22ce;} /* نيون بنفسجي */
-        body[data-theme="4"] { --bg-color: #064e3b; --primary-color: #10b981; --glow-color: rgba(16, 185, 129, 0.6); --secondary-color: #059669;} /* زمردي سام */
-        body[data-theme="5"] { --bg-color: #450a0a; --primary-color: #ef4444; --glow-color: rgba(239, 68, 68, 0.6); --secondary-color: #dc2626;} /* جحيم قرمزي */
-        body[data-theme="6"] { --bg-color: #171717; --primary-color: #f59e0b; --glow-color: rgba(245, 158, 11, 0.6); --secondary-color: #d97706;} /* ذهبي فاخر */
-        body[data-theme="7"] { --bg-color: #083344; --primary-color: #06b6d4; --glow-color: rgba(6, 182, 212, 0.6); --secondary-color: #0891b2;} /* محيط سيبراني */
-        body[data-theme="8"] { --bg-color: #2e1065; --primary-color: #f43f5e; --glow-color: rgba(244, 63, 94, 0.6); --secondary-color: #e11d48;} /* ماجنتا سحري */
-        body[data-theme="9"] { --bg-color: #14532d; --primary-color: #84cc16; --glow-color: rgba(132, 204, 22, 0.6); --secondary-color: #65a30d;} /* أخضر ليموني */
-        body[data-theme="10"]{ --bg-color: #000000; --primary-color: #ffffff; --glow-color: rgba(255, 255, 255, 0.4); --secondary-color: #cccccc;} /* أبيض وأسود */
+        body[data-theme="1"] {
+            --bg-color: #1e2022;
+            --primary-color: #9ca3af;
+            --glow-color: rgba(156, 163, 175, 0.6);
+            --secondary-color: #4b5563;
+        }
+
+        /* رصاصي فاخر (الأساسي) */
+        body[data-theme="2"] {
+            --bg-color: #0f172a;
+            --primary-color: #3b82f6;
+            --glow-color: rgba(59, 130, 246, 0.6);
+            --secondary-color: #2563eb;
+        }
+
+        /* أزرق فضائي */
+        body[data-theme="3"] {
+            --bg-color: #1a0b2e;
+            --primary-color: #a855f7;
+            --glow-color: rgba(168, 85, 247, 0.6);
+            --secondary-color: #7e22ce;
+        }
+
+        /* نيون بنفسجي */
+        body[data-theme="4"] {
+            --bg-color: #064e3b;
+            --primary-color: #10b981;
+            --glow-color: rgba(16, 185, 129, 0.6);
+            --secondary-color: #059669;
+        }
+
+        /* زمردي سام */
+        body[data-theme="5"] {
+            --bg-color: #450a0a;
+            --primary-color: #ef4444;
+            --glow-color: rgba(239, 68, 68, 0.6);
+            --secondary-color: #dc2626;
+        }
+
+        /* جحيم قرمزي */
+        body[data-theme="6"] {
+            --bg-color: #171717;
+            --primary-color: #f59e0b;
+            --glow-color: rgba(245, 158, 11, 0.6);
+            --secondary-color: #d97706;
+        }
+
+        /* ذهبي فاخر */
+        body[data-theme="7"] {
+            --bg-color: #083344;
+            --primary-color: #06b6d4;
+            --glow-color: rgba(6, 182, 212, 0.6);
+            --secondary-color: #0891b2;
+        }
+
+        /* محيط سيبراني */
+        body[data-theme="8"] {
+            --bg-color: #2e1065;
+            --primary-color: #f43f5e;
+            --glow-color: rgba(244, 63, 94, 0.6);
+            --secondary-color: #e11d48;
+        }
+
+        /* ماجنتا سحري */
+        body[data-theme="9"] {
+            --bg-color: #14532d;
+            --primary-color: #84cc16;
+            --glow-color: rgba(132, 204, 22, 0.6);
+            --secondary-color: #65a30d;
+        }
+
+        /* أخضر ليموني */
+        body[data-theme="10"] {
+            --bg-color: #000000;
+            --primary-color: #ffffff;
+            --glow-color: rgba(255, 255, 255, 0.4);
+            --secondary-color: #cccccc;
+        }
+
+        /* أبيض وأسود */
 
         /* ================= الإعدادات العامة ================= */
-        * { box-sizing: border-box; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
-            background-color: var(--bg-color); color: var(--text-color);
-            min-height: 100vh; overflow-x: hidden; transition: all 0.5s ease;
-            display: flex; justify-content: center; align-items: center; padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: all 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
         /* ================= الخلفية الـ 3D التفاعلية ================= */
         .background-orbs {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1; overflow: hidden; filter: blur(60px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            filter: blur(60px);
         }
+
         .orb {
-            position: absolute; border-radius: 50%;
-            background: var(--primary-color); opacity: 0.3;
+            position: absolute;
+            border-radius: 50%;
+            background: var(--primary-color);
+            opacity: 0.3;
             animation: floatOrb 20s infinite alternate ease-in-out;
         }
+
         @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(20vw, 30vh) scale(1.5); }
-            100% { transform: translate(-20vw, -20vh) scale(0.8); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(20vw, 30vh) scale(1.5);
+            }
+
+            100% {
+                transform: translate(-20vw, -20vh) scale(0.8);
+            }
         }
 
         /* ================= الحاويات الزجاجية ================= */
         .glass-panel {
             background: var(--container-bg);
-            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--border-color);
             border-top: 1px solid rgba(255, 255, 255, 0.3);
             border-left: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 24px; padding: 40px; width: 100%; max-width: 850px;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 850px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 25px var(--glow-color);
-            display: none; transform: translateY(50px) scale(0.9); opacity: 0;
+            display: none;
+            transform: translateY(50px) scale(0.9);
+            opacity: 0;
             transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        .glass-panel.active { display: block; transform: translateY(0) scale(1); opacity: 1; }
+
+
+
+        .glass-panel.active {
+            display: block;
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
 
         /* ================= لوحة الثيمات ================= */
         .theme-container {
-            position: fixed; top: 20px; right: -60px; display: flex; flex-direction: column;
-            gap: 12px; z-index: 100; transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(0,0,0,0.6); padding: 15px; border-radius: 15px 0 0 15px;
-            backdrop-filter: blur(10px); border: 1px solid var(--border-color);
+            position: fixed;
+            top: 20px;
+            right: -60px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 15px 0 0 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
         }
-        .theme-container:hover { right: 0; }
+
+        .theme-container:hover {
+            right: 0;
+        }
+
         .theme-toggle-icon {
-            position: absolute; left: -40px; top: 10px; background: rgba(0,0,0,0.6);
-            padding: 10px; border-radius: 10px 0 0 10px; cursor: pointer; color: white;
+            position: absolute;
+            left: -40px;
+            top: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 10px 0 0 10px;
+            cursor: pointer;
+            color: white;
         }
+
         .theme-btn {
-            width: 35px; height: 35px; border-radius: 50%; cursor: pointer;
-            border: 2px solid rgba(255,255,255,0.2); transition: all 0.3s;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
             position: relative;
         }
-        .theme-btn:hover { transform: scale(1.2); border-color: white; box-shadow: 0 0 15px currentColor; }
-        .theme-btn::after {
-            content: attr(data-name); position: absolute; right: 45px; top: 50%;
-            transform: translateY(-50%); background: rgba(0,0,0,0.8); color: white;
-            padding: 5px 10px; border-radius: 5px; font-size: 12px; white-space: nowrap;
-            opacity: 0; pointer-events: none; transition: 0.3s;
+
+        .theme-btn:hover {
+            transform: scale(1.2);
+            border-color: white;
+            box-shadow: 0 0 15px currentColor;
         }
-        .theme-btn:hover::after { opacity: 1; right: 50px; }
+
+        .theme-btn::after {
+            content: attr(data-name);
+            position: absolute;
+            right: 45px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .theme-btn:hover::after {
+            opacity: 1;
+            right: 50px;
+        }
 
         /* ================= النصوص والمدخلات ================= */
-        h1 { font-size: 32px; font-weight: 900; }
-        h1, h2, h3 { text-align: center; margin-bottom: 20px; color: transparent; 
-                     background: linear-gradient(to right, #fff, var(--primary-color)); 
-                     -webkit-background-clip: text; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        
-        .hatem-brand { display: block; font-size: 16px; color: var(--primary-color); margin-top: 5px; text-shadow: none; font-weight: bold;}
-
-        .input-group { margin-bottom: 20px; position: relative; }
-        .input-group i { position: absolute; right: 15px; top: 18px; color: var(--primary-color); font-size: 18px;}
-        
-        input[type="text"] {
-            width: 100%; padding: 15px 45px 15px 15px; border-radius: 12px;
-            border: 2px solid var(--border-color); background: rgba(0,0,0,0.4);
-            color: white; font-size: 16px; font-weight: bold; outline: none;
-            transition: all 0.3s ease; box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+        h1 {
+            font-size: 32px;
+            font-weight: 900;
         }
+
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: transparent;
+            background: linear-gradient(to right, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hatem-brand {
+            display: block;
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-top: 5px;
+            text-shadow: none;
+            font-weight: bold;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            right: 15px;
+            top: 18px;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 45px 15px 15px;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
         input[type="text"]:focus {
-            border-color: var(--primary-color); background: rgba(0,0,0,0.6);
-            box-shadow: 0 0 15px var(--glow-color), inset 0 2px 5px rgba(0,0,0,0.5); transform: scale(1.01);
+            border-color: var(--primary-color);
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 15px var(--glow-color), inset 0 2px 5px rgba(0, 0, 0, 0.5);
+            transform: scale(1.01);
         }
 
         /* ================= الأزرار التفاعلية الجيلاتينية ================= */
         @keyframes jelly {
-            0% { transform: scale(1, 1); }
-            30% { transform: scale(1.05, 0.95); }
-            40% { transform: scale(0.95, 1.05); }
-            50% { transform: scale(1.02, 0.98); }
-            65% { transform: scale(0.98, 1.02); }
-            75% { transform: scale(1.01, 0.99); }
-            100% { transform: scale(1, 1); }
+            0% {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.05, 0.95);
+            }
+
+            40% {
+                transform: scale(0.95, 1.05);
+            }
+
+            50% {
+                transform: scale(1.02, 0.98);
+            }
+
+            65% {
+                transform: scale(0.98, 1.02);
+            }
+
+            75% {
+                transform: scale(1.01, 0.99);
+            }
+
+            100% {
+                transform: scale(1, 1);
+            }
         }
 
         .btn {
-            width: 100%; padding: 18px; border-radius: 12px; border: none;
+            width: 100%;
+            padding: 18px;
+            border-radius: 12px;
+            border: none;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white; font-size: 20px; font-weight: 900; cursor: pointer;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3), 0 0 15px var(--glow-color);
-            position: relative; overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--glow-color);
+            position: relative;
+            overflow: hidden;
         }
+
         .btn::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
             transition: 0.5s;
         }
-        .btn:hover { animation: jelly 0.6s ease; box-shadow: 0 15px 25px rgba(0,0,0,0.5), 0 0 30px var(--glow-color); }
-        .btn:hover::before { left: 100%; }
-        .btn:active { transform: translateY(2px) scale(0.98); box-shadow: 0 5px 10px rgba(0,0,0,0.3); }
 
-        .btn-retry { background: linear-gradient(135deg, #f59e0b, #d97706); margin-top: 15px; display: none; }
+        .btn:hover {
+            animation: jelly 0.6s ease;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5), 0 0 30px var(--glow-color);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:active {
+            transform: translateY(2px) scale(0.98);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-retry {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            margin-top: 15px;
+            display: none;
+        }
 
         /* ================= تصميم الأسئلة ================= */
         .question-card {
-            background: rgba(255,255,255,0.03); border: 1px solid var(--border-color);
-            border-radius: 16px; padding: 20px; margin-bottom: 15px; /* تم تقليل المسافة هنا */
-            transition: all 0.3s; transform-style: preserve-3d;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            /* تم تقليل المسافة هنا */
+            transition: all 0.3s;
+            transform-style: preserve-3d;
         }
-        .question-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); border-color: var(--primary-color); background: rgba(255,255,255,0.05); }
-        
-        .question-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
-        .points-badge { background: var(--primary-color); padding: 5px 15px; border-radius: 20px; font-size: 13px; font-weight: bold; box-shadow: 0 0 10px var(--glow-color); white-space: nowrap; margin-right: 15px;}
-        
-        .question-image { max-width: 100%; border-radius: 10px; margin-bottom: 15px; border: 2px solid var(--primary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.3); display: block; margin-left: auto; margin-right: auto;}
 
-        .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
-        
-        .option-label {
-            background: rgba(0,0,0,0.4); border: 2px solid var(--border-color);
-            padding: 12px 15px; border-radius: 10px; cursor: pointer; transition: all 0.3s;
-            display: flex; align-items: center; gap: 10px; font-weight: 600;
+        .question-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.05);
         }
-        .option-label:hover { background: rgba(255,255,255,0.1); transform: translateX(-5px); border-color: rgba(255,255,255,0.3); }
-        input[type="radio"] { display: none; }
-        input[type="radio"]:checked + .option-label {
-            border-color: var(--primary-color); background: var(--glow-color);
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.5); transform: scale(1.03);
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .points-badge {
+            background: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            box-shadow: 0 0 10px var(--glow-color);
+            white-space: nowrap;
+            margin-right: 15px;
+        }
+
+        .question-image {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--border-color);
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .option-label:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        input[type="radio"]:checked+.option-label {
+            border-color: var(--primary-color);
+            background: var(--glow-color);
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+            transform: scale(1.03);
         }
 
         /* ================= شاشة النتيجة والمراجعة ================= */
         .result-circle {
-            width: 180px; height: 180px; border-radius: 50%; border: 12px solid var(--border-color);
-            border-top-color: var(--primary-color); border-bottom-color: var(--primary-color);
-            display: flex; justify-content: center; align-items: center; font-size: 45px; font-weight: 900;
-            margin: 0 auto 30px; box-shadow: 0 0 40px var(--glow-color);
-            text-shadow: 0 0 15px var(--primary-color); animation: spinCircle 1s ease-out forwards;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 12px solid var(--border-color);
+            border-top-color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            font-weight: 900;
+            margin: 0 auto 30px;
+            box-shadow: 0 0 40px var(--glow-color);
+            text-shadow: 0 0 15px var(--primary-color);
+            animation: spinCircle 1s ease-out forwards;
         }
-        @keyframes spinCircle { 0% { transform: rotate(0deg) scale(0.5); opacity: 0; } 100% { transform: rotate(1080deg) scale(1); opacity: 1; } }
-        
-        .attempts-counter { font-size: 16px; color: #cbd5e1; margin-bottom: 20px; background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 10px; display: inline-block; border: 1px solid var(--border-color); }
+
+        @keyframes spinCircle {
+            0% {
+                transform: rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: rotate(1080deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .attempts-counter {
+            font-size: 16px;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: inline-block;
+            border: 1px solid var(--border-color);
+        }
 
         /* ستايل المراجعة للأخطاء */
-        .review-section { margin-top: 30px; text-align: right; }
-        .review-card {
-            background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444;
-            padding: 15px; border-radius: 12px; margin-bottom: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .review-section {
+            margin-top: 30px;
+            text-align: right;
         }
-        .review-card.correct-card {
-            background: rgba(16, 185, 129, 0.1); border-color: #10b981;
-        }
-        .review-q-text { font-weight: bold; margin-bottom: 10px; font-size: 16px; color: white;}
-        .review-wrong { color: #fca5a5; margin-bottom: 5px; }
-        .review-correct { color: #6ee7b7; font-weight: bold; }
 
+        .review-card {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-card.correct-card {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: #10b981;
+        }
+
+        .review-q-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: white;
+        }
+
+        .review-wrong {
+            color: #fca5a5;
+            margin-bottom: 5px;
+        }
+
+        .review-correct {
+            color: #6ee7b7;
+            font-weight: bold;
+        }
+
+        @media (max-width: 650px) {
+            .question-header {
+                position: relative;
+                padding-top: 45px;
+            }
+
+            .points-badge {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        }
+
+        @media (max-width: 450px) {
+            .glass-panel {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h1,
+            h2,
+            h3 {
+                font-size: 20px;
+            }
+
+            .hatem-brand {
+                font-size: 14px;
+            }
+
+            .input-group i {
+                font-size: 14px;
+            }
+
+            input[type="text"] {
+                padding: 10px 20px 10px 10px;
+                font-size: 16px;
+            }
+
+            input::placeholder {
+                font-size: 14px;
+            }
+
+
+
+        }
     </style>
 </head>
-<body data-theme="1"> <div class="theme-container">
+
+<body data-theme="1">
+    <div class="theme-container">
         <div class="theme-toggle-icon"><i class="fas fa-palette"></i></div>
         <div class="theme-btn" style="background: #9ca3af;" data-name="رصاصي " onclick="setTheme('1')"></div>
         <div class="theme-btn" style="background: #3b82f6;" data-name="أزرق " onclick="setTheme('2')"></div>
@@ -223,13 +628,15 @@
 
     <div class="glass-panel active" id="login-view">
         <h1>
-            <i class="fas fa-rocket"></i> امتحان شامل (DNA,RNA,مناعه،هرمونات) 
+            <i class="fas fa-rocket"></i> امتحان شامل (DNA,RNA,مناعه،هرمونات)
             <span class="hatem-brand"> أ/حاتم عبدالله</span>
         </h1>
-        <div style="background: rgba(239, 68, 68, 0.2); border-right: 4px solid #ef4444; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
-            <p style="color: #fca5a5; font-size: 14px; margin: 0;">⚠️ <b>تنبيه:</b> لديك 3 محاولات فقط لأداء هذا الاختبار. سيتم إرسال نتيجتك ووقت التسليم تلقائياً للمراجعة.</p>
+        <div
+            style="background: rgba(239, 68, 68, 0.2); border-right: 4px solid #ef4444; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
+            <p style="color: #fca5a5; font-size: 14px; margin: 0;">⚠️ <b>تنبيه:</b> لديك 3 محاولات فقط لأداء هذا
+                الاختبار. سيتم إرسال نتيجتك ووقت التسليم تلقائياً للمراجعة.</p>
         </div>
-        
+
         <div class="input-group">
             <i class="fas fa-user"></i>
             <input type="text" id="studentName" placeholder="أدخل اسمك الثلاثي ..." autocomplete="off">
@@ -249,28 +656,35 @@
             <span class="hatem-brand">أمنياتنا بالتوفيق | حاتم عبدالله</span>
         </h2>
         <div id="questions-container"></div>
-        <button class="btn" onclick="submitExam()" style="margin-top: 20px;"><i class="fas fa-paper-plane"></i> تسليم الإجابات النهائية</button>
+        <button class="btn" onclick="submitExam()" style="margin-top: 20px;"><i class="fas fa-paper-plane"></i> تسليم
+            الإجابات النهائية</button>
     </div>
 
     <div class="glass-panel" id="result-view" style="text-align: center;">
         <h1 style="font-size: 40px; margin-bottom: 5px;"><i class="fas fa-trophy"></i> انتهى الاختبار!</h1>
         <span class="hatem-brand" style="margin-bottom: 20px; display: block;"> أ/حاتم عبدالله</span>
-        <p style="margin-bottom: 20px; font-size: 20px;">عمل رائع يا <span id="display-name" style="color: var(--primary-color); font-weight: 900;"></span></p>
-        
+        <p style="margin-bottom: 20px; font-size: 20px;">عمل رائع يا <span id="display-name"
+                style="color: var(--primary-color); font-weight: 900;"></span></p>
+
         <div class="result-circle" id="final-score">0/0</div>
-        
+
         <div class="attempts-counter">
-            <i class="fas fa-redo"></i> عدد المحاولات : <span id="attempts-display" style="font-weight: bold; color: var(--primary-color);">1/3</span>
+            <i class="fas fa-redo"></i> عدد المحاولات : <span id="attempts-display"
+                style="font-weight: bold; color: var(--primary-color);">1/3</span>
         </div>
-        
+
         <p style="color: #94a3b8; font-size: 15px;">تم تسجيل نتيجتك.</p>
 
         <div id="review-container" class="review-section">
-            <h3 style="text-align: right; font-size: 22px; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;"><i class="fas fa-search"></i> مراجعة الإجابات:</h3>
+            <h3
+                style="text-align: right; font-size: 22px; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                <i class="fas fa-search"></i> مراجعة الإجابات:
+            </h3>
             <div id="review-content"></div>
         </div>
 
-        <button class="btn btn-retry" id="retry-btn" onclick="retryExam()"><i class="fas fa-sync-alt"></i> إعادة الاختبار (محاولة جديدة)</button>
+        <button class="btn btn-retry" id="retry-btn" onclick="retryExam()"><i class="fas fa-sync-alt"></i> إعادة
+            الاختبار (محاولة جديدة)</button>
     </div>
 
     <script>
@@ -278,7 +692,7 @@
         // 1. الإعدادات والتوكن
         // ==========================================
         const BOT_TOKEN = "8635550416:AAGsNM7mnjak80kQclTHdMJYKKvaiAJHNjI";
-        const CHAT_ID = "5394550159"; 
+        const CHAT_ID = "5394550159";
 
         // =========================================================================
         // 🎯👇🎯👇🎯👇 منطقة إضافة وتعديل الأسئلة (بنك الأسئلة) 👇🎯👇🎯👇🎯
@@ -294,200 +708,200 @@
           },
         */
         const questionsDB = [
-             {
-        text: "تعرض شخص لحادث أدى إلى استئصال الغدة الجار درقية بالخطأ أثناء جراحة في الغدة الدرقية. أي الأعراض التالية ستظهر عليه فوراً إن لم يتلقَ علاجاً؟",
-        image: "",
-        options: ["هشاشة عظام شديدة", "تشنجات عضلية مؤلمة بسبب نقص الكالسيوم في الدم", "زيادة مفاجئة في ضربات القلب", "جحوظ في العينين وانخفاض الوزن"],
-        correctIndex: 1,
-        points: 2
-    },
-    // 2 - عادي (1 درجة)
-    {
-        text: "كم عدد الكودونات على الـ mRNA التي تمثل أحماضاً أمينية إذا كان البروتين الناتج يتكون من 50 حمضاً أمينياً؟",
-        image: "",
-        options: ["50", "51", "49", "150"],
-        correctIndex: 0,
-        points: 1
-    },
-    // 4 - عادي (2 درجة)
-    {
-        text: "إذا علمت أن تتابع القواعد النيتروجينية في شريط DNA القالب هو (3' TAC-CGA-TTC 5')، فما هو تتابع الأحماض الأمينية الناتج؟ (مع العلم أن AUG=ميثيونين، GCU=ألانين، AAG=لايسين)",
-        image: "",
-        options: ["ميثيونين - ألانين - لايسين", "تيروزين - أرجينين - فينيل ألانين", "ميثيونين - أرجينين - لايسين", "فالين - ألانين - لايسين"],
-        correctIndex: 0,
-        points: 2
-    },
-    // 5 - عادي (1 درجة)
-    {
-        text: "أي من المواد الكيميائية التالية تفرزها الخلايا التائية القاتلة (Tc) لتمزيق غشاء الخلية المصابة بالفيروس؟",
-        image: "",
-        options: ["الإنترليوكينات", "البرفورين (صانع الثقوب)", "المتممات", "الهيستامين"],
-        correctIndex: 1,
-        points: 1
-    },
-    // 7 - عادي (1 درجة)
-    {
-        text: "في تجربة جريفث، عند حقن الفئران ببكتيريا (S) المقتولة حرارياً مع بكتيريا (R) الحية، ماتت بعض الفئران. ما هو التفسير الجزيئي الدقيق لحدوث التحول البكتيري؟",
-        image: "",
-        options: ["انتقال RNA من S إلى R", "انتقال بروتين الكبسولة من S إلى R", "انتقال المادة الوراثية DNA من S الميتة إلى R الحية وتغيير صفاتها", "طفرة تلقائية في البكتيريا R بسبب الحرارة"],
-        correctIndex: 2,
-        points: 1
-    },
-    // 8 - عادي (2 درجة)
-    {
-        text: "امرأة حامل في الشهر الرابع عانت من قصور مفاجئ في إفراز هرمون البروجستيرون من الجسم الأصفر. ما هو الاحتمال الأرجح لحالة الحمل؟",
-        image: "",
-        options: ["يحدث إجهاض فوري", "يكتمل الحمل طبيعياً لاعتماد الجنين على المشيمة في إفراز البروجستيرون", "يتشوه الجنين", "تتوقف المشيمة عن النمو"],
-        correctIndex: 1,
-        points: 2
-    },
-    // 10 - عادي (1 درجة)
-    {
-        text: "المناعة الخلوية تتميز عن المناعة الخلطية بقدرتها الأساسية على:",
-        image: "",
-        options: ["التعامل مع السموم البكتيرية في الدم", "تدمير الخلايا السرطانية والخلايا المصابة بالفيروسات", "إنتاج الخلايا الذاكرة", "الارتباط المباشر بالأنتيجين الحر في بلازما الدم"],
-        correctIndex: 1,
-        points: 1
-    },
-    // 11 - عادي (2 درجة)
-    {
-        text: "إذا كان جزيء DNA يحتوي على 200 زوج من القواعد النيتروجينية، وكانت نسبة الجوانين 20%، فكم عدد روابط الهيدروجين الثنائية في هذا الجزيء بالكامل؟",
-        image: "",
-        options: ["120 رابطة", "240 رابطة", "60 رابطة", "160 رابطة"],
-        correctIndex: 0,
-        points: 2
-    },
-    // 13 - عادي (1 درجة)
-    {
-        text: "ما هو الهرمون الذي يؤثر على أنسجة غير غدية لرفع ضغط الدم وتخفيف الجفاف العالي؟",
-        image: "",
-        options: ["الألدوستيرون", "الفازوبريسين (ADH)", "الأدرينالين", "الثيروكسين"],
-        correctIndex: 1,
-        points: 1
-    },
-    // 14 - عادي (1 درجة)
-    {
-        text: "في تقنية استنساخ DNA باستخدام البلازميدات، يفضل استخدام إنزيم قصر يترك 'نهايات لاصقة' بدلاً من 'نهايات مستوية'. ما السبب العلمي لذلك؟",
-        image: "",
-        options: ["لمنع تكسير البلازميد", "لتسهيل ازدواج القواعد النيتروجينية بين الـ DNA المرغوب والبلازميد", "لزيادة سرعة تكاثر البكتيريا", "لتقليل استهلاك إنزيم الربط"],
-        correctIndex: 1,
-        points: 1
-    },
-    // 16 - عادي (1 درجة)
-    {
-        text: "مرض 'الوهن العضلي الوبيل' هو مرض مناعي ذاتي تهاجم فيه الأجسام المضادة مستقبلات الأستيل كولين. أي الهرمونات التالية قد يستخدم كعلاج مثبط للمناعة لتخفيف الأعراض؟",
-        image: "",
-        options: ["الثيموسين", "الكورتيزون", "الأنسولين", "الباراثورمون"],
-        correctIndex: 1,
-        points: 1
-    },
-    // 17 - عادي (1 درجة)
-    {
-        text: "الجينوم البشري يحتوي على كمية كبيرة من DNA الذي لا يمثل شفرة (Non-coding DNA). أي مما يلي لا يعتبر من وظائف هذا الـ DNA؟",
-        image: "",
-        options: ["العمل كمناطق تنظيمية للجينات", "المحافظة على تركيب الكروموسومات (السنترومير والتيلومير)", "بناء إنزيمات التنفس الخلوي بشكل مباشر", "تشكيل الحبيبات الطرفية لحماية الكروموسوم"],
-        correctIndex: 2,
-        points: 1
-    },
-    // 19 - عادي (2 درجة)
-    {
-        text: "إذا تم استئصال الغدة التيموسية من فأر حديث الولادة، ما هو التأثير المتوقع على جهازه المناعي؟",
-        image: "",
-        options: ["نقص في الخلايا البائية فقط", "انعدام المناعة الخلوية (التائية) وضعف شديد في المناعة المكتسبة", "غياب الأجسام المضادة تماماً من اليوم الأول", "زيادة نشاط الخلايا القاتلة الطبيعية (NK) للتعويض"],
-        correctIndex: 1,
-        points: 2
-    },
-    // 21 - عادي (1 درجة)
-    {
-        text: "يتميز هرمون الجلوكاجون بأن مستقبله يوجد على غشاء الخلية وليس داخلها، وهذا يعني أنه هرمون:",
-        image: "",
-        options: ["ستيرويدي يعبر الغشاء البلازمي", "بروتيني لا يستطيع عبور الغشاء البلازمي", "دهني يذوب في الدهون", "يفرز من قشرة الكظرية"],
-        correctIndex: 1,
-        points: 1
-    },
-    // 23 - عادي (1 درجة)
-    {
-        text: "ما هو الاختلاف الرئيسي بين إنزيمات القصر في البكتيريا وإنزيمات الديوكسي ريبونيوكلييز المتواجدة في البنكرياس؟",
-        image: "",
-        options: ["الأولى تقطع الـ DNA عند مواقع محددة، والثانية تحلله تحليلاً كاملاً", "الأولى تقطع الـ RNA والثانية تقطع الـ DNA", "الأولى توجد في حقيقيات النواة والثانية في أوليات النواة", "كلاهما يعمل بنفس الآلية تماماً"],
-        correctIndex: 0,
-        points: 1
-    },
-    // 25 - عادي (1 درجة)
-    {
-        text: "أي من المواد التالية في النبات تعتبر بمثابة 'خط الدفاع الأول' وتمنع استقرار الماء على سطح الأوراق مما يقلل فرصة نمو الفطريات؟",
-        image: "",
-        options: ["الكيوتين (الطبقة الشمعية)", "السيليلوز", "اللجنين", "السوبرين"],
-        correctIndex: 0,
-        points: 1
-    },
-    // 26 - عادي (1 درجة)
-    {
-        text: "أثناء عملية ترجمة mRNA، متى يتوقف الريبوسوم عن قراءة الشفرة بشكل نهائي؟",
-        image: "",
-        options: ["عند وصوله لكودون AUG", "عند نفاد جزيئات tRNA من السيتوبلازم", "عند ارتباط بروتين 'عامل الإطلاق' بكودون الوقف", "عندما يصل إلى ذيل عديد الأدنين"],
-        correctIndex: 2,
-        points: 1
-    },
-    // 28 - عادي (1 درجة)
-    {
-        text: "هرمون يفرز من منطقة تحت المهاد (Hypothalamus) ويخزن في الفص الخلفي للغدة النخامية ليؤثر على عضلات الرحم:",
-        image: "",
-        options: ["البرولاكتين", "الأوكسيتوسين", "الريلاكسين", "الإستروجين"],
-        correctIndex: 1,
-        points: 1
-    },
-    // 30 - عادي (1 درجة)
-    {
-        text: "في آلية عمل الخلايا التائية المساعدة (Th)، ما هو الجزيء الموجود على سطح الخلايا البلعمية والذي تعرض من خلاله الأنتيجين للخلايا Th؟",
-        image: "",
-        options: ["مستقبل CD8", "بروتين التوافق النسيجي (MHC)", "مستقبل CD4", "الجسم المضاد IgA"],
-        correctIndex: 1,
-        points: 1
-    },
-    // 31 - عادي (1 درجة)
-    {
-        text: "الطفرة التي تحدث نتيجة تغير قاعدتين نيتروجينيتين أو أكثر في نفس الجين، مما يؤدي لإنتاج بروتين غير فعال، تسمى طفرة:",
-        image: "",
-        options: ["كروموسومية عددية", "جينيه (نقطية أو إزاحة إطار)", "صبغية تركيبية", "تضاعف صبغي"],
-        correctIndex: 1,
-        points: 1
-    },
-    // 32 - صورة (1 درجة)
-    // 33 - عادي (1 درجة)
-    {
-        text: "أي الهرمونات الآتية يلعب دوراً مشتركاً في كل من عملية الهضم (تحفيز عصارات) وعملية الأيض؟",
-        image: "",
-        options: ["السيكريتين", "الجاسترين", "الأنسولين", "الثيروكسين"],
-        correctIndex: 0,
-        points: 1
-    },
-    // 35 - عادي (1 درجة)
-    {
-        text: "ما وظيفة ذيل 'عديد الأدنين' (Poly-A tail) الموجود في نهاية جزيء mRNA في حقيقيات النواة؟",
-        image: "",
-        options: ["يمثل شفرة لأحماض أمينية معينة", "يحدد موقع ارتباط الريبوسوم", "يحمي الـ mRNA من التحلل بواسطة إنزيمات السيتوبلازم", "يساعد في ارتباط الـ tRNA"],
-        correctIndex: 2,
-        points: 1
-    },
-    // 37 - عادي (1 درجة)
-    {
-        text: "من وظائف الهيستامين في الاستجابة بالالتهاب (خط الدفاع الثاني):",
-        image: "",
-        options: ["تضييق الأوعية الدموية لتقليل النزيف", "توسيع الأوعية الدموية وزيادة نفاذيتها للسوائل والخلايا المناعية", "تنشيط الخلايا البائية لإنتاج أجسام مضادة", "قتل البكتيريا بشكل مباشر بالسموم"],
-        correctIndex: 1,
-        points: 1
-    },
-    // 38 - صورة (1 درجة)
-    // 39 - عادي (1 درجة)
-    {
-        text: "في تجربة أفرى ومساعديه، تم التأكد من أن الـ DNA هو المادة الوراثية وليس البروتين باستخدام إنزيم:",
-        image: "",
-        options: ["ديوكسي ريبونيوكلييز", "ريبيونيوكلييز", "بلمرة DNA", "بلمرة RNA"],
-        correctIndex: 0,
-        points: 1
-    }
-    // 44 - صورة (1 درجة)}
+            {
+                text: "تعرض شخص لحادث أدى إلى استئصال الغدة الجار درقية بالخطأ أثناء جراحة في الغدة الدرقية. أي الأعراض التالية ستظهر عليه فوراً إن لم يتلقَ علاجاً؟",
+                image: "",
+                options: ["هشاشة عظام شديدة", "تشنجات عضلية مؤلمة بسبب نقص الكالسيوم في الدم", "زيادة مفاجئة في ضربات القلب", "جحوظ في العينين وانخفاض الوزن"],
+                correctIndex: 1,
+                points: 2
+            },
+            // 2 - عادي (1 درجة)
+            {
+                text: "كم عدد الكودونات على الـ mRNA التي تمثل أحماضاً أمينية إذا كان البروتين الناتج يتكون من 50 حمضاً أمينياً؟",
+                image: "",
+                options: ["50", "51", "49", "150"],
+                correctIndex: 0,
+                points: 1
+            },
+            // 4 - عادي (2 درجة)
+            {
+                text: "إذا علمت أن تتابع القواعد النيتروجينية في شريط DNA القالب هو (3' TAC-CGA-TTC 5')، فما هو تتابع الأحماض الأمينية الناتج؟ (مع العلم أن AUG=ميثيونين، GCU=ألانين، AAG=لايسين)",
+                image: "",
+                options: ["ميثيونين - ألانين - لايسين", "تيروزين - أرجينين - فينيل ألانين", "ميثيونين - أرجينين - لايسين", "فالين - ألانين - لايسين"],
+                correctIndex: 0,
+                points: 2
+            },
+            // 5 - عادي (1 درجة)
+            {
+                text: "أي من المواد الكيميائية التالية تفرزها الخلايا التائية القاتلة (Tc) لتمزيق غشاء الخلية المصابة بالفيروس؟",
+                image: "",
+                options: ["الإنترليوكينات", "البرفورين (صانع الثقوب)", "المتممات", "الهيستامين"],
+                correctIndex: 1,
+                points: 1
+            },
+            // 7 - عادي (1 درجة)
+            {
+                text: "في تجربة جريفث، عند حقن الفئران ببكتيريا (S) المقتولة حرارياً مع بكتيريا (R) الحية، ماتت بعض الفئران. ما هو التفسير الجزيئي الدقيق لحدوث التحول البكتيري؟",
+                image: "",
+                options: ["انتقال RNA من S إلى R", "انتقال بروتين الكبسولة من S إلى R", "انتقال المادة الوراثية DNA من S الميتة إلى R الحية وتغيير صفاتها", "طفرة تلقائية في البكتيريا R بسبب الحرارة"],
+                correctIndex: 2,
+                points: 1
+            },
+            // 8 - عادي (2 درجة)
+            {
+                text: "امرأة حامل في الشهر الرابع عانت من قصور مفاجئ في إفراز هرمون البروجستيرون من الجسم الأصفر. ما هو الاحتمال الأرجح لحالة الحمل؟",
+                image: "",
+                options: ["يحدث إجهاض فوري", "يكتمل الحمل طبيعياً لاعتماد الجنين على المشيمة في إفراز البروجستيرون", "يتشوه الجنين", "تتوقف المشيمة عن النمو"],
+                correctIndex: 1,
+                points: 2
+            },
+            // 10 - عادي (1 درجة)
+            {
+                text: "المناعة الخلوية تتميز عن المناعة الخلطية بقدرتها الأساسية على:",
+                image: "",
+                options: ["التعامل مع السموم البكتيرية في الدم", "تدمير الخلايا السرطانية والخلايا المصابة بالفيروسات", "إنتاج الخلايا الذاكرة", "الارتباط المباشر بالأنتيجين الحر في بلازما الدم"],
+                correctIndex: 1,
+                points: 1
+            },
+            // 11 - عادي (2 درجة)
+            {
+                text: "إذا كان جزيء DNA يحتوي على 200 زوج من القواعد النيتروجينية، وكانت نسبة الجوانين 20%، فكم عدد روابط الهيدروجين الثنائية في هذا الجزيء بالكامل؟",
+                image: "",
+                options: ["120 رابطة", "240 رابطة", "60 رابطة", "160 رابطة"],
+                correctIndex: 0,
+                points: 2
+            },
+            // 13 - عادي (1 درجة)
+            {
+                text: "ما هو الهرمون الذي يؤثر على أنسجة غير غدية لرفع ضغط الدم وتخفيف الجفاف العالي؟",
+                image: "",
+                options: ["الألدوستيرون", "الفازوبريسين (ADH)", "الأدرينالين", "الثيروكسين"],
+                correctIndex: 1,
+                points: 1
+            },
+            // 14 - عادي (1 درجة)
+            {
+                text: "في تقنية استنساخ DNA باستخدام البلازميدات، يفضل استخدام إنزيم قصر يترك 'نهايات لاصقة' بدلاً من 'نهايات مستوية'. ما السبب العلمي لذلك؟",
+                image: "",
+                options: ["لمنع تكسير البلازميد", "لتسهيل ازدواج القواعد النيتروجينية بين الـ DNA المرغوب والبلازميد", "لزيادة سرعة تكاثر البكتيريا", "لتقليل استهلاك إنزيم الربط"],
+                correctIndex: 1,
+                points: 1
+            },
+            // 16 - عادي (1 درجة)
+            {
+                text: "مرض 'الوهن العضلي الوبيل' هو مرض مناعي ذاتي تهاجم فيه الأجسام المضادة مستقبلات الأستيل كولين. أي الهرمونات التالية قد يستخدم كعلاج مثبط للمناعة لتخفيف الأعراض؟",
+                image: "",
+                options: ["الثيموسين", "الكورتيزون", "الأنسولين", "الباراثورمون"],
+                correctIndex: 1,
+                points: 1
+            },
+            // 17 - عادي (1 درجة)
+            {
+                text: "الجينوم البشري يحتوي على كمية كبيرة من DNA الذي لا يمثل شفرة (Non-coding DNA). أي مما يلي لا يعتبر من وظائف هذا الـ DNA؟",
+                image: "",
+                options: ["العمل كمناطق تنظيمية للجينات", "المحافظة على تركيب الكروموسومات (السنترومير والتيلومير)", "بناء إنزيمات التنفس الخلوي بشكل مباشر", "تشكيل الحبيبات الطرفية لحماية الكروموسوم"],
+                correctIndex: 2,
+                points: 1
+            },
+            // 19 - عادي (2 درجة)
+            {
+                text: "إذا تم استئصال الغدة التيموسية من فأر حديث الولادة، ما هو التأثير المتوقع على جهازه المناعي؟",
+                image: "",
+                options: ["نقص في الخلايا البائية فقط", "انعدام المناعة الخلوية (التائية) وضعف شديد في المناعة المكتسبة", "غياب الأجسام المضادة تماماً من اليوم الأول", "زيادة نشاط الخلايا القاتلة الطبيعية (NK) للتعويض"],
+                correctIndex: 1,
+                points: 2
+            },
+            // 21 - عادي (1 درجة)
+            {
+                text: "يتميز هرمون الجلوكاجون بأن مستقبله يوجد على غشاء الخلية وليس داخلها، وهذا يعني أنه هرمون:",
+                image: "",
+                options: ["ستيرويدي يعبر الغشاء البلازمي", "بروتيني لا يستطيع عبور الغشاء البلازمي", "دهني يذوب في الدهون", "يفرز من قشرة الكظرية"],
+                correctIndex: 1,
+                points: 1
+            },
+            // 23 - عادي (1 درجة)
+            {
+                text: "ما هو الاختلاف الرئيسي بين إنزيمات القصر في البكتيريا وإنزيمات الديوكسي ريبونيوكلييز المتواجدة في البنكرياس؟",
+                image: "",
+                options: ["الأولى تقطع الـ DNA عند مواقع محددة، والثانية تحلله تحليلاً كاملاً", "الأولى تقطع الـ RNA والثانية تقطع الـ DNA", "الأولى توجد في حقيقيات النواة والثانية في أوليات النواة", "كلاهما يعمل بنفس الآلية تماماً"],
+                correctIndex: 0,
+                points: 1
+            },
+            // 25 - عادي (1 درجة)
+            {
+                text: "أي من المواد التالية في النبات تعتبر بمثابة 'خط الدفاع الأول' وتمنع استقرار الماء على سطح الأوراق مما يقلل فرصة نمو الفطريات؟",
+                image: "",
+                options: ["الكيوتين (الطبقة الشمعية)", "السيليلوز", "اللجنين", "السوبرين"],
+                correctIndex: 0,
+                points: 1
+            },
+            // 26 - عادي (1 درجة)
+            {
+                text: "أثناء عملية ترجمة mRNA، متى يتوقف الريبوسوم عن قراءة الشفرة بشكل نهائي؟",
+                image: "",
+                options: ["عند وصوله لكودون AUG", "عند نفاد جزيئات tRNA من السيتوبلازم", "عند ارتباط بروتين 'عامل الإطلاق' بكودون الوقف", "عندما يصل إلى ذيل عديد الأدنين"],
+                correctIndex: 2,
+                points: 1
+            },
+            // 28 - عادي (1 درجة)
+            {
+                text: "هرمون يفرز من منطقة تحت المهاد (Hypothalamus) ويخزن في الفص الخلفي للغدة النخامية ليؤثر على عضلات الرحم:",
+                image: "",
+                options: ["البرولاكتين", "الأوكسيتوسين", "الريلاكسين", "الإستروجين"],
+                correctIndex: 1,
+                points: 1
+            },
+            // 30 - عادي (1 درجة)
+            {
+                text: "في آلية عمل الخلايا التائية المساعدة (Th)، ما هو الجزيء الموجود على سطح الخلايا البلعمية والذي تعرض من خلاله الأنتيجين للخلايا Th؟",
+                image: "",
+                options: ["مستقبل CD8", "بروتين التوافق النسيجي (MHC)", "مستقبل CD4", "الجسم المضاد IgA"],
+                correctIndex: 1,
+                points: 1
+            },
+            // 31 - عادي (1 درجة)
+            {
+                text: "الطفرة التي تحدث نتيجة تغير قاعدتين نيتروجينيتين أو أكثر في نفس الجين، مما يؤدي لإنتاج بروتين غير فعال، تسمى طفرة:",
+                image: "",
+                options: ["كروموسومية عددية", "جينيه (نقطية أو إزاحة إطار)", "صبغية تركيبية", "تضاعف صبغي"],
+                correctIndex: 1,
+                points: 1
+            },
+            // 32 - صورة (1 درجة)
+            // 33 - عادي (1 درجة)
+            {
+                text: "أي الهرمونات الآتية يلعب دوراً مشتركاً في كل من عملية الهضم (تحفيز عصارات) وعملية الأيض؟",
+                image: "",
+                options: ["السيكريتين", "الجاسترين", "الأنسولين", "الثيروكسين"],
+                correctIndex: 0,
+                points: 1
+            },
+            // 35 - عادي (1 درجة)
+            {
+                text: "ما وظيفة ذيل 'عديد الأدنين' (Poly-A tail) الموجود في نهاية جزيء mRNA في حقيقيات النواة؟",
+                image: "",
+                options: ["يمثل شفرة لأحماض أمينية معينة", "يحدد موقع ارتباط الريبوسوم", "يحمي الـ mRNA من التحلل بواسطة إنزيمات السيتوبلازم", "يساعد في ارتباط الـ tRNA"],
+                correctIndex: 2,
+                points: 1
+            },
+            // 37 - عادي (1 درجة)
+            {
+                text: "من وظائف الهيستامين في الاستجابة بالالتهاب (خط الدفاع الثاني):",
+                image: "",
+                options: ["تضييق الأوعية الدموية لتقليل النزيف", "توسيع الأوعية الدموية وزيادة نفاذيتها للسوائل والخلايا المناعية", "تنشيط الخلايا البائية لإنتاج أجسام مضادة", "قتل البكتيريا بشكل مباشر بالسموم"],
+                correctIndex: 1,
+                points: 1
+            },
+            // 38 - صورة (1 درجة)
+            // 39 - عادي (1 درجة)
+            {
+                text: "في تجربة أفرى ومساعديه، تم التأكد من أن الـ DNA هو المادة الوراثية وليس البروتين باستخدام إنزيم:",
+                image: "",
+                options: ["ديوكسي ريبونيوكلييز", "ريبيونيوكلييز", "بلمرة DNA", "بلمرة RNA"],
+                correctIndex: 0,
+                points: 1
+            }
+            // 44 - صورة (1 درجة)}
 
 
         ];
@@ -502,7 +916,7 @@
         let maxPoints = questionsDB.reduce((sum, q) => sum + q.points, 0);
         let currentQuestionsData = []; // لتخزين الأسئلة مع الاختيارات بعد الخلط
         let examStartTime; // لحساب الوقت المستغرق
-        
+
         // نظام المحاولات
         const MAX_ATTEMPTS = 3;
         let currentAttempt = 0;
@@ -515,7 +929,7 @@
 
         // توليد الكرات المضيئة في الخلفية
         const bgContainer = document.getElementById('bg-orbs');
-        for(let i=0; i<6; i++) {
+        for (let i = 0; i < 6; i++) {
             let orb = document.createElement('div');
             orb.className = 'orb';
             orb.style.width = `${Math.random() * 300 + 100}px`;
@@ -547,11 +961,11 @@
             const nameInput = document.getElementById('studentName').value.trim();
             const groupInput = document.getElementById('studentGroup').value.trim();
 
-            if(nameInput.split(' ').length < 2) {
+            if (nameInput.split(' ').length < 2) {
                 Swal.fire({ icon: 'error', title: 'خطأ', text: 'الرجاء إدخال اسمك الثنائي أو الثلاثي!', background: 'var(--container-bg)', color: '#fff', confirmButtonColor: 'var(--primary-color)' });
                 return;
             }
-            if(!groupInput) {
+            if (!groupInput) {
                 Swal.fire({ icon: 'warning', title: 'خطأ', text: 'الرجاء كتابة ميعاد المجموعة أو السنتر!', background: 'var(--container-bg)', color: '#fff', confirmButtonColor: 'var(--primary-color)' });
                 return;
             }
@@ -571,7 +985,7 @@
             setTimeout(() => {
                 document.getElementById(showId).classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 400); 
+            }, 400);
         }
 
         // عرض الأسئلة مع خلط الاختيارات
@@ -585,10 +999,10 @@
                 let mappedOptions = q.options.map((optText, optIndex) => {
                     return { text: optText, isCorrect: optIndex === q.correctIndex };
                 });
-                
+
                 // خلط الاختيارات
                 mappedOptions = shuffleArray(mappedOptions);
-                
+
                 // حفظ النسخة المخلطة للتقييم لاحقاً
                 currentQuestionsData.push({ originalQ: q, renderedOptions: mappedOptions });
 
@@ -623,7 +1037,7 @@
 
             // إضافة تأثير تغيير الأيقونة عند الاختيار
             document.querySelectorAll('input[type="radio"]').forEach(radio => {
-                radio.addEventListener('change', function() {
+                radio.addEventListener('change', function () {
                     const group = this.name;
                     document.querySelectorAll(`input[name="${group}"] + label i`).forEach(icon => {
                         icon.className = 'far fa-circle';
@@ -640,21 +1054,21 @@
             let wrongQuestionsForTelegram = [];
             let reviewHTML = "";
 
-            for(let i = 0; i < currentQuestionsData.length; i++) {
+            for (let i = 0; i < currentQuestionsData.length; i++) {
                 const qData = currentQuestionsData[i];
                 const selected = document.querySelector(`input[name="q${i}"]:checked`);
-                
-                if(!selected) { allAnswered = false; break; }
+
+                if (!selected) { allAnswered = false; break; }
 
                 const selectedIndex = parseInt(selected.value);
                 const selectedOption = qData.renderedOptions[selectedIndex];
                 const correctOption = qData.renderedOptions.find(o => o.isCorrect);
 
-                if(selectedOption.isCorrect) {
+                if (selectedOption.isCorrect) {
                     currentScore += qData.originalQ.points;
                 } else {
                     wrongQuestionsForTelegram.push(`سؤال ${i + 1} (${qData.originalQ.text})`);
-                    
+
                     // بناء كود المراجعة للأخطاء للطالب
                     reviewHTML += `
                         <div class="review-card">
@@ -666,7 +1080,7 @@
                 }
             }
 
-            if(!allAnswered) {
+            if (!allAnswered) {
                 Swal.fire({ icon: 'warning', title: 'تنبيه!', text: 'يجب الإجابة على جميع الأسئلة!', background: 'var(--container-bg)', color: '#fff', confirmButtonColor: 'var(--primary-color)' });
                 return;
             }
@@ -691,8 +1105,8 @@
             message += `⏱️ الوقت المستغرق: ${durationString}\n`;
             message += `⏳ وقت الإرسال: ${submitTime}\n`;
             message += `🌐 الأي بي: ${studentIP}\n`;
-            
-            if(wrongQuestionsForTelegram.length > 0) {
+
+            if (wrongQuestionsForTelegram.length > 0) {
                 message += `\n❌ الأسئلة الخاطئة:\n- ` + wrongQuestionsForTelegram.join(`\n- `);
             } else {
                 message += `\n✅ الطالب قفل الامتحان! (علامة كاملة 🏆)`;
@@ -704,21 +1118,21 @@
             try {
                 await fetch(url, {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ chat_id: CHAT_ID, text: message })
                 });
 
                 Swal.close();
-                
+
                 // تحديث شاشة النتيجة والمراجعة
                 document.getElementById('display-name').innerText = studentName;
                 document.getElementById('final-score').innerText = `${currentScore}/${maxPoints}`;
                 document.getElementById('attempts-display').innerText = `${currentAttempt}/${MAX_ATTEMPTS}`;
                 document.getElementById('review-content').innerHTML = reviewHTML;
-                
+
                 // التحكم في ظهور زر الإعادة
                 const retryBtn = document.getElementById('retry-btn');
-                if(currentAttempt < MAX_ATTEMPTS) {
+                if (currentAttempt < MAX_ATTEMPTS) {
                     retryBtn.style.display = 'inline-block';
                 } else {
                     retryBtn.style.display = 'none';
@@ -727,13 +1141,13 @@
 
                 switchView('exam-view', 'result-view');
 
-                if(currentScore === maxPoints) {
+                if (currentScore === maxPoints) {
                     setTimeout(() => {
                         Swal.fire({ icon: 'success', title: 'أسطورة! 🏆', text: 'تم تقفيل الامتحان بنجاح، تحيات مهندس حاتم عبدالله!', background: 'var(--container-bg)', color: '#fff', confirmButtonColor: 'var(--primary-color)' });
                     }, 500);
                 }
 
-            } catch(err) {
+            } catch (err) {
                 Swal.fire({ icon: 'error', title: 'حدث خطأ', text: 'لم نتمكن من الاتصال بالخادم، يرجى التحقق من اتصالك بالإنترنت.', background: 'var(--container-bg)', color: '#fff' });
             }
         }
@@ -742,9 +1156,10 @@
         function retryExam() {
             // إعادة ضبط الوقت وتوليد أسئلة جديدة (بترتيب جديد)
             examStartTime = new Date();
-            renderQuestions(); 
+            renderQuestions();
             switchView('result-view', 'exam-view');
         }
     </script>
 </body>
-</html>
+
+    </html>
